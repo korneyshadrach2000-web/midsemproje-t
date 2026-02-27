@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.studentrecords.AdminController"
+            stylesheets="@student-theme.css"
+            styleClass="root-pane">
+
+    <top>
+        <HBox spacing="10" styleClass="top-bar">
+            <Label text="Admin Panel" styleClass="app-title"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button text="Refresh" onAction="#onRefresh" styleClass="toolbar-button"/>
+            <Button text="Backup DB…" onAction="#onBackupDatabase" styleClass="toolbar-button,accent-button"/>
+            <Button text="Clear All Records" onAction="#onClearAll" styleClass="toolbar-button,danger-button"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="10" style="-fx-padding: 10 14 10 14;">
+            <Label fx:id="totalStudentsLabel" text="Total students: 0" styleClass="app-title" />
+
+            <HBox spacing="16">
+                <VBox spacing="6" VBox.vgrow="ALWAYS">
+                    <Label text="By Program" style="-fx-text-fill: #9ca3af; -fx-font-weight: 600;"/>
+                    <TableView fx:id="programTable" prefHeight="260" styleClass="table-view">
+                        <columns>
+                            <TableColumn text="Program" prefWidth="180">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="program"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="Count" prefWidth="100">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="count"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <VBox spacing="6" VBox.vgrow="ALWAYS">
+                    <Label text="By Year" style="-fx-text-fill: #9ca3af; -fx-font-weight: 600;"/>
+                    <TableView fx:id="yearTable" prefHeight="260" styleClass="table-view">
+                        <columns>
+                            <TableColumn text="Year" prefWidth="120">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="year"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="Count" prefWidth="100">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="count"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>
+

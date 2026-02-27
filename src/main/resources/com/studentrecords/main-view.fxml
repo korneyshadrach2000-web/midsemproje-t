@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.studentrecords.MainViewController"
+            stylesheets="@student-theme.css"
+            styleClass="root-pane">
+
+    <top>
+        <VBox spacing="6">
+            <HBox spacing="8" styleClass="top-bar">
+                <Label text="Student Records Manager" styleClass="app-title"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Label text="Offline" styleClass="badge-offline"/>
+            </HBox>
+
+            <ToolBar styleClass="toolbar">
+                <Button text="Add"    onAction="#onAdd"   styleClass="toolbar-button,accent-button"/>
+                <Button text="Edit"   onAction="#onEdit"  styleClass="toolbar-button"/>
+                <Button text="Delete" onAction="#onDelete" styleClass="toolbar-button,danger-button"/>
+
+                <Separator/>
+
+                <Label text="Program:"/>
+                <ComboBox fx:id="programFilter" prefWidth="140"/>
+
+                <Label text="Year:"/>
+                <ComboBox fx:id="yearFilter" prefWidth="80"/>
+
+                <Label text="Search:"/>
+                <TextField fx:id="searchField" promptText="ID, name, email…" prefWidth="180"/>
+
+                <Pane HBox.hgrow="ALWAYS"/>
+
+                <Button text="Admin"       onAction="#onAdmin"      styleClass="toolbar-button"/>
+                <Button text="Export CSV…" onAction="#onExportCsv"  styleClass="toolbar-button"/>
+                <Button text="Summary…"    onAction="#onSummary"    styleClass="toolbar-button"/>
+            </ToolBar>
+        </VBox>
+    </top>
+
+    <center>
+        <StackPane styleClass="table-container">
+            <TableView fx:id="studentTable" prefHeight="400" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="idColumn"      text="Student ID" prefWidth="120"/>
+                    <TableColumn fx:id="nameColumn"    text="Name"       prefWidth="200"/>
+                    <TableColumn fx:id="emailColumn"   text="Email"      prefWidth="230"/>
+                    <TableColumn fx:id="programColumn" text="Program"    prefWidth="140"/>
+                    <TableColumn fx:id="yearColumn"    text="Year"       prefWidth="70"/>
+                    <TableColumn fx:id="gpaColumn"     text="GPA"        prefWidth="70"/>
+                </columns>
+            </TableView>
+        </StackPane>
+    </center>
+
+    <bottom>
+        <Label fx:id="statusLabel"
+               text="Ready. Add students or use filters."
+               styleClass="status-bar"
+               BorderPane.alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="6" right="10" bottom="6" left="10"/>
+            </padding>
+        </Label>
+    </bottom>
+</BorderPane>
+
